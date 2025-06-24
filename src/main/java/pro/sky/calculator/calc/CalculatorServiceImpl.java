@@ -1,4 +1,4 @@
-package pro.sky.calculator;
+package pro.sky.calculator.calc;
 
 
 import org.springframework.stereotype.Service;
@@ -32,4 +32,5 @@ public class CalculatorServiceImpl implements CalculatorService {
         }
         return a / b;
     }
+
 }
