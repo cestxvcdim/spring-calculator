@@ -1,4 +1,4 @@
-package pro.sky.calculator;
+package pro.sky.calculator.calc;
 
 
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -53,4 +53,5 @@ public class CalculatorController {
     public String handleMissingParam(MissingServletRequestParameterException ex) {
         return String.format("Parameter '%s' is required", ex.getParameterName());
     }
+
 }
