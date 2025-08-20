@@ -1,12 +1,16 @@
-package pro.sky.calculator.employee;
+package pro.sky.calculator.employee_work.employee;
 
 public class Employee {
     private String firstName;
     private String lastName;
+    private Integer department;
+    private Integer salary;
 
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, Integer department, Integer salary) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.department = department;
+        this.salary = salary;
     }
 
     public String getFirstName() {
@@ -17,12 +21,12 @@ public class Employee {
         return lastName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Integer getDepartment() {
+        return department;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Integer getSalary() {
+        return salary;
     }
 
     @Override

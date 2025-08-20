@@ -1,37 +1,49 @@
-package pro.sky.calculator.employee;
+package pro.sky.calculator.employee_work.employee;
 
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pro.sky.calculator.employee.exceptions.EmployeeAlreadyAddedException;
-import pro.sky.calculator.employee.exceptions.EmployeeNotFoundException;
-import pro.sky.calculator.employee.exceptions.EmployeeStorageIsEmptyException;
-import pro.sky.calculator.employee.exceptions.EmployeeStorageIsFullException;
+import pro.sky.calculator.employee_work.exceptions.EmployeeAlreadyAddedException;
+import pro.sky.calculator.employee_work.exceptions.EmployeeNotFoundException;
+import pro.sky.calculator.employee_work.exceptions.EmployeeStorageIsEmptyException;
+import pro.sky.calculator.employee_work.exceptions.EmployeeStorageIsFullException;
 
 import java.util.Set;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-    private final EmployeeService employeeService;
+    private final EmployeeServiceImpl employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeServiceImpl employeeService) {
         this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/add")
-    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.add(firstName, lastName);
+    public Employee addEmployee(@RequestParam("firstName") String firstName,
+                                @RequestParam("lastName") String lastName,
+                                @RequestParam("department") Integer department,
+                                @RequestParam("salary") Integer salary) {
+
+        return employeeService.add(firstName, lastName, department, salary);
     }
 
     @GetMapping(path = "/remove")
-    public Employee removeEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.remove(firstName, lastName);
+    public Employee removeEmployee(@RequestParam("firstName") String firstName,
+                                   @RequestParam("lastName") String lastName,
+                                   @RequestParam("department") Integer department,
+                                   @RequestParam("salary") Integer salary) {
+
+        return employeeService.remove(firstName, lastName, department, salary);
     }
 
     @GetMapping(path = "/find")
-    public Employee findEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return employeeService.find(firstName, lastName);
+    public Employee findEmployee(@RequestParam("firstName") String firstName,
+                                 @RequestParam("lastName") String lastName,
+                                 @RequestParam("department") Integer department,
+                                 @RequestParam("salary") Integer salary) {
+
+        return employeeService.find(firstName, lastName, department, salary);
     }
 
     @GetMapping(path = "/all")
