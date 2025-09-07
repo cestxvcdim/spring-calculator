@@ -8,7 +8,7 @@ import pro.sky.calculator.employee_work.exceptions.EmployeeNotFoundException;
 import pro.sky.calculator.employee_work.exceptions.EmployeeStorageIsEmptyException;
 import pro.sky.calculator.employee_work.exceptions.EmployeeStorageIsFullException;
 
-import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
@@ -47,8 +47,8 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/all")
-    public Set<Employee> getAllEmployees() {
-        return employeeService.getAll();
+    public List<Employee> getAllEmployees() {
+        return EmployeeServiceImpl.getAll();
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
