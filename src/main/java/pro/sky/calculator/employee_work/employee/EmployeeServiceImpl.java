@@ -5,13 +5,12 @@ import pro.sky.calculator.employee_work.exceptions.EmployeeAlreadyAddedException
 import pro.sky.calculator.employee_work.exceptions.EmployeeNotFoundException;
 import pro.sky.calculator.employee_work.exceptions.EmployeeStorageIsFullException;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private final static Set<Employee> employees = new HashSet<>();
-    private final int maxSize = 1000;
+    private final static List<Employee> employees = new ArrayList<>();
 
     @Override
     public Employee find(String firstName, String lastName, Integer department, Integer salary) {
@@ -24,6 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee add(String firstName, String lastName, Integer department, Integer salary) {
+        int maxSize = 1000;
         if (employees.size() == maxSize) {
             throw new EmployeeStorageIsFullException("Employee storage is already full");
         }
@@ -49,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         throw new EmployeeNotFoundException("Employee not found");
     }
 
-    public static Set<Employee> getAll() {
+    public static List<Employee> getAll() {
         return employees;
     }
 }
